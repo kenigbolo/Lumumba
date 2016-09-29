@@ -1,3 +1,35 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  text-align: center;
+  margin-top: 5px;
+}
+
+#page-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.image-logo {
+  height: 50px;
+  width: 75px;
+  margin-top: -16px;
+  padding-top: 0.23em;
+}
+
+.navbar-btn {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.navbar-center {
+  text-align: center;
+  float: none;
+  display: inline-block;
+  margin-top: 1em;
+
+}
+.container-fluid {
+  height: 2em;
+}
