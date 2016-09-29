@@ -6,9 +6,100 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/050a679357.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Script to fade out flash messages -->
+    <script>
+      $(document).ready(function(){
+        $("#flash").fadeOut(3000);
+      });
+    </script>
+    <!-- End of Script to fade out flash messages -->
   </head>
 
   <body>
-    <%= yield %>
+    <!-- Beginning of Navigation Bar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+          <a class="btn  btn-social btn-facebook navbar-btn" href="#">
+            <span class="fa fa-facebook"></span>
+          </a>
+
+          <a class="btn  btn-social btn-twitter navbar-btn" href="#">
+            <span class="fa fa-twitter"></span>
+          </a>
+
+          <a class="btn  btn-social btn-instagram navbar-btn" href="#">
+            <span class="fa fa-instagram"></span>
+          </a>
+
+          <a class="btn  btn-social btn-pinterest-p navbar-btn" href="#">
+            <span class="fa fa-pinterest-p"></span>
+          </a>
+
+          <a class="btn  btn-social btn-google-plus navbar-btn" href="#">
+            <span class="fa fa-google-plus"></span>
+          </a>
+
+          <a class="btn  btn-social btn-linkedin navbar-btn" href="#">
+            <span class="fa fa-linkedin"></span>
+          </a>
+        </div>
+
+        <!-- Begining of Flash notice -->
+        <div class="nav navbar-nav navbar-center" >
+          <p class="notice" id="flash"><%= notice %></p>
+          <p class="alert" id="flash"><%= alert %></p>
+        </div>
+        <!-- End of Flash notice -->
+
+        <!-- User profile, search and basket icons -->
+        <% if user_signed_in? %>
+          <div class="nav navbar-nav navbar-right" >
+            <a class="btn  btn-social btn-search navbar-btn" href="#">
+              <span class="fa fa-search"></span>
+            </a>
+
+            <a class="btn  btn-social btn-shopping-basket navbar-btn" href="#">
+              <span class="fa fa-shopping-basket"></span>
+            </a>
+
+            <a class="btn  btn-social btn-user navbar-btn" href="#">
+              <span class="fa fa-user"></span>
+            </a>
+
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete , class: "btn btn-info navbar-btn" %>
+          </div>
+        <!-- End of User profile, search and basket icons -->
+
+        <% else %>
+
+        <!-- Sign In / Sign up buttons -->
+          <div class="nav navbar-nav navbar-right">
+            <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-social navbar-btn" %> |
+            <%= link_to 'Login', new_user_session_path, class: "btn btn-social navbar-btn"%> |
+            <%= link_to '   Sign in with Facebook', user_facebook_omniauth_authorize_path, class: "btn btn-social btn-facebook navbar-btn fa fa-facebook"%>
+          </div>
+        <!-- End of Sign In / Sign up buttons -->
+        <% end %>
+
+      </div>
+    </nav>
+    <!-- End of Navigation Bar -->
+
+
+    <div id="container">
+      <div id="user_nav">
+        <% if user_signed_in? %>
+          Logged in as <strong> <%= current_user.email %></strong>.
+          <%= link_to 'Edit Profile', edit_user_registration_path %>
+        <% end %>
+      </div>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
