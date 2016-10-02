@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+  <% if session["current_user_id"] == @user.id %>
+  	<%= link_to 'Edit Profile', edit_user_registration_path %>
+  <% end %>
+<% end %>
+
+<%= @user.first_name %>
+<%= @user.last_name %>
+<%= @user.email %>
+
+<% if user_signed_in? %>
+  <% if session["current_user_id"] == @user.id %>
+  	<%= link_to 'Add design', new_design_path_url(id: @user.id), class: "btn btn-info navbar-btn" %>
+  <% end %>
+<% end %>
+
+<% @designs.each do |design| %>
+	<%= image_tag design.image.url.to_s, class: "image-thumbnail" %>
+	<% if user_signed_in? %>
+	  <% if session["current_user_id"] == @user.id %>
+	  	<%= link_to 'Delete', delete_design_path_url(id: design.id), class: "btn btn-info navbar-btn" %>
+	  <% end %>
+	<% end %>
+<% end %>
