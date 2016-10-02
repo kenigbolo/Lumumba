@@ -12,4 +12,10 @@ class DesignController < ApplicationController
   	redirect_to user_profile_path_url
   end
 
+  def delete
+  	design = Design.where("user_id = ?", session["current_user_id"]).where("id = ?", params[:id]).first
+    design.destroy
+    redirect_to user_profile_path_url
+  end
+
 end

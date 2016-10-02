@@ -15,5 +15,6 @@
 <% end %>
 
 <% @designs.each do |design| %>
-	<%= image_tag design.image.url.to_s %>
+	<%= image_tag design.image.url.to_s, class: "image-thumbnail" %>
+	<%= link_to 'Delete', delete_design_path_url(id: design.id), class: "btn btn-info navbar-btn" %>
 <% end %>

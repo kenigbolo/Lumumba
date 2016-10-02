@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   post '/designs', to: 'design#create'
 
+  get '/designs/delete/:id', to: 'design#delete', as: :delete_design_path
+
 end
