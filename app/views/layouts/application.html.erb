@@ -67,7 +67,7 @@
               <span class="fa fa-shopping-basket"></span>
             </a>
 
-            <a class="btn  btn-social btn-user navbar-btn" href="#">
+            <a class="btn  btn-social btn-user navbar-btn" href="/users">
               <span class="fa fa-user"></span>
             </a>
 
@@ -92,12 +92,13 @@
 
 
     <div id="container">
-      <div id="user_nav">
+      
+<!--       <div id="user_nav">
         <% if user_signed_in? %>
           Logged in as <strong> <%= current_user.email %></strong>.
           <%= link_to 'Edit Profile', edit_user_registration_path %>
         <% end %>
-      </div>
+      </div> -->
 
       <%= yield %>
     </div>

@@ -39,6 +39,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use devise gem for user authentication
 gem 'devise'
+# Use carrierwave gem for image upload
+gem 'carrierwave'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
