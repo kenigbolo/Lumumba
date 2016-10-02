@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'welcome#view'
 
-  get '/users/', to: 'welcome#view'
+  get '/users/', to: 'welcome#view', as: :user_profile_path
 
   get '/designs/new/:id', to: 'design#new', as: :new_design_path
 

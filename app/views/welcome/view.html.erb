@@ -13,3 +13,7 @@
   	<%= link_to 'Add design', new_design_path_url(id: @user.id), class: "btn btn-info navbar-btn" %>
   <% end %>
 <% end %>
+
+<% @designs.each do |design| %>
+	<%= image_tag design.image.url.to_s %>
+<% end %>
