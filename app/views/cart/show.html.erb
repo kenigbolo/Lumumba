@@ -1,4 +1,8 @@
-<% @items.each do |item| %>
-  <%= item.name %> : <%= item.price %>
-<% end %>
+<% if @cart != nil %>
+  <% @items.each do |item| %>
+    <%= item.name %> : <%= item.price %>
+  <% end %>
 <p> Total : <%= @cart.total_amount %> </p>
+<% else %>
+	<p>You have no items in your cart</p>
+<% end %>
