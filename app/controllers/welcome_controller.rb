@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
   def view
   	if session["current_user_id"] != nil
   	  @user = User.where("id = ?", session["current_user_id"]).first
-  	  @designs = Design.where("user_id = ?", session["current_user_id"])
+  	  @designs = Design.where("user_id = ?", session["current_user_id"]).paginate(page: params[:page], per_page: 5)
   	elsif params[:id] != nil
   	  @user = User.where("id = ?", params[:id]).first
   	  @designs = Design.where("user_id = ?", params[:id])
