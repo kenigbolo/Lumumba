@@ -26,6 +26,8 @@ gem 'figaro'
 # Use omniauth for oauth
 gem 'omniauth'
 gem 'omniauth-facebook'
+# Will_paginate Gem for Rails 3+, Sinatra, and Merb
+gem 'will_paginate', '~> 3.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
