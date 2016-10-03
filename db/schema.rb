@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003100057) do
+ActiveRecord::Schema.define(version: 20161003100840) do
 
   create_table "carts", force: :cascade do |t|
     t.decimal  "total_amount"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20161003100057) do
     t.string   "description"
     t.string   "image"
     t.index ["user_id"], name: "index_designs_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.decimal  "price"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_items_on_cart_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -9,16 +9,16 @@ class DesignController < ApplicationController
   	if session["current_user_id"] != nil
 	  design = Design.create(name: params[:design][:name], 
 	  	description: params[:design][:description], user_id: session["current_user_id"],
-	  	image: params[:design][:image])
+	  	image: params[:design][:image], price: params[:design][:price])
 
   	elsif session["warden.user.user.key"][0][0] != nil
 	  design = Design.create(name: params[:design][:name], 
 	  	description: params[:design][:description], user_id: session["warden.user.user.key"][0][0],
-	  	image: params[:design][:image]) 
+	  	image: params[:design][:image], price: params[:design][:price]) 
 
   	end
 
-  	redirect_to user_profile_path_url
+  	redirect_to user_profile_path
   end
 
   def delete
@@ -29,7 +29,7 @@ class DesignController < ApplicationController
   	  design = Design.where("user_id = ?", session["warden.user.user.key"][0][0]).where("id = ?", params[:id]).first
       design.destroy
   	end
-    redirect_to user_profile_path_url
+    redirect_to user_profile_path
   end
 
 end
