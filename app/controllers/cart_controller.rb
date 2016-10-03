@@ -47,11 +47,27 @@ class CartController < ApplicationController
   def add_item_to_cart(user_cart, session, params_id)
   	if user_cart == nil
 	  design = Design.where("id = ?", params_id).first
-	  cart = Cart.create(total_amount: design.price, user_id: session)
-	  item = Item.create(name: design.name, price: design.price, cart_id: cart.id)
+	  
+	  cart = Cart.create(
+	  	total_amount: design.price,
+	  	user_id: session
+	  	)
+	  
+	  item = Item.create(
+	  	name: design.name, 
+	  	price: design.price, 
+	  	cart_id: cart.id
+	  	)
+
 	else
 	  design = Design.where("id = ?", params_id).first
-	  item = Item.create(name: design.name, price: design.price, cart_id: user_cart.id)
+	  
+	  item = Item.create(
+	  	name: design.name, 
+	  	price: design.price, 
+	  	cart_id: user_cart.id
+	  	)
+
 	  user_cart.total_amount += design.price
 	  user_cart.save
 	end
