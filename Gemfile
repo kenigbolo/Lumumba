@@ -41,6 +41,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # Use carrierwave gem for image upload
 gem 'carrierwave'
+# Use stripe Gem to simulate payment
+# Use stripe gem for processing payments
+gem 'stripe'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
                     controllers: {omniauth_callbacks: "omniauth_callbacks"}
                     # controllers: {registrations: "registrations"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  resources :charges
+  
   root 'welcome#index'
 
   get '/users/:id', to: 'welcome#view'
