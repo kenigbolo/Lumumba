@@ -15,7 +15,7 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: <%= @cart.total_amount %></span>
+      <span>Amount: €<%= @cart.total_amount %></span>
     </label>
   </article>
   <%= hidden_field_tag "id", @cart.total_amount %>
