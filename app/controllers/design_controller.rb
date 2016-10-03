@@ -6,15 +6,32 @@ class DesignController < ApplicationController
   end
 
   def create
-  	if session["current_user_id"] != nil
-	  design = Design.create(name: params[:design][:name], 
-	  	description: params[:design][:description], user_id: session["current_user_id"],
-	  	image: params[:design][:image], price: params[:design][:price])
+    facebook_user = session["current_user_id"]
+    devise_user = session["warden.user.user.key"][0][0]
+    name = params[:design][:name]
+    desc = params[:design][:description]
+    image = params[:design][:image]
+    price = params[:design][:price]
 
-  	elsif session["warden.user.user.key"][0][0] != nil
-	  design = Design.create(name: params[:design][:name], 
-	  	description: params[:design][:description], user_id: session["warden.user.user.key"][0][0],
-	  	image: params[:design][:image], price: params[:design][:price]) 
+  	if facebook_user != nil
+  	  
+      design = Design.create(
+        name: name, 
+  	  	description: desc, 
+        user_id: facebook_user,
+  	  	image: image, 
+        price: price
+        )
+
+  	elsif devise_user != nil
+	  
+      design = Design.create(
+        name: name, 
+  	  	description: desc, 
+        user_id: devise_user,
+  	  	image: image, 
+        price: price
+        ) 
 
   	end
 
@@ -22,11 +39,14 @@ class DesignController < ApplicationController
   end
 
   def delete
-  	if session["current_user_id"] != nil
-  	  design = Design.where("user_id = ?", session["current_user_id"]).where("id = ?", params[:id]).first
+    facebook_user = session["current_user_id"]
+    devise_user = session["warden.user.user.key"][0][0]
+  	
+    if facebook_user != nil
+  	  design = Design.where("user_id = ?", facebook_user).where("id = ?", params[:id]).first
       design.destroy
-    elsif session["warden.user.user.key"][0][0] != nil
-  	  design = Design.where("user_id = ?", session["warden.user.user.key"][0][0]).where("id = ?", params[:id]).first
+    elsif devise_user != nil
+  	  design = Design.where("user_id = ?", devise_user).where("id = ?", params[:id]).first
       design.destroy
   	end
     redirect_to user_profile_path
