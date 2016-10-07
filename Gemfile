@@ -47,6 +47,9 @@ gem 'carrierwave'
 # Use stripe gem for processing payments
 gem 'stripe'
 
+# administrate gem for rails administrate
+gem "administrate"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
