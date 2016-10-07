@@ -27,7 +27,7 @@ gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
 # Will_paginate Gem for Rails 3+, Sinatra, and Merb
-gem 'will_paginate', '~> 3.1.0'
+# gem 'will_paginate', "3.0.pre2"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -48,7 +48,8 @@ gem 'carrierwave'
 gem 'stripe'
 
 # administrate gem for rails administrate
-gem "administrate"
+gem 'administrate', github: 'greetpoint/administrate', branch: 'rails5'
+gem 'bourbon', '~> 5.0.0.beta.5' 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

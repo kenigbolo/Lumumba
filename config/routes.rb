@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+resources :carts
+resources :designs
+resources :items
+
+    root to: "users#index"
+  end
+
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
                     controllers: {omniauth_callbacks: "omniauth_callbacks"}
                     # controllers: {registrations: "registrations"}
