@@ -52,4 +52,8 @@ class DesignController < ApplicationController
     redirect_to user_profile_path
   end
 
+  def competition
+    @designs = Design.all
+  end
+
 end

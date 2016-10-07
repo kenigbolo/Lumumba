@@ -1,7 +1,10 @@
-
 <% if @cart != nil %>
   <% @items.each do |item| %>
-    <%= item.name %> : <%= item.price %>
+    <div>
+      <p> Name: <%= item.name %> </p>
+      <p> Price: <%= item.price %> </p>
+      <p> Quantity: <%= item.quantity %> </p>
+      </div><br>
   <% end %>
 <% else %>
 	<p>You have no items in your cart</p>

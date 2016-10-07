@@ -1,0 +1,10 @@
+<% @designs.each do |design| %>
+	<%= design.name %>
+	<%= image_tag design.image.url.to_s, class: "image-thumbnail" %>
+	
+	<%= form_tag(new_cart_path(id: design.id), method: "get") do %>
+		<%= label_tag(:quantity, "Quantity")%>
+		<%= number_field_tag :quantity, nil, min: 1%>
+		<%= submit_tag('Add to Cart', class: "btn btn-info navbar-btn")%>
+	<% end %>
+<% end %>

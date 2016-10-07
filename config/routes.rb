@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   get '/cart/new/:id', to: 'cart#new', as: :new_cart
 
   get '/cart/show', to: 'cart#show', as: :show_cart
+
+  get '/designs/competition', to: 'design#competition', as: :competition
 end
